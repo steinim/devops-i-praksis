@@ -1,0 +1,6 @@
+---
+user: devops
+group: devops
+user_name: "Devops app user"
+
+deploy_stamp: "{{ ansible_date_time['epoch'] }}"

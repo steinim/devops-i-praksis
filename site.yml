@@ -1,0 +1,30 @@
+---
+
+- hosts: dbservers
+  gather_facts: False
+  roles:
+    - common
+    - postgresql
+    - db
+
+- hosts: appservers
+  serial: 1
+  roles:
+    - common
+    - java
+    - users
+    - app
+
+- hosts: dbservers
+  gather_facts: False
+  roles:
+    - post_db
+
+- hosts: proxies
+  gather_facts: False
+  vars:
+    - app_port: "1234"
+  roles:
+    - common
+    - nginx
+
