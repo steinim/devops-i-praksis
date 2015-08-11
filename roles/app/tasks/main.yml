@@ -77,8 +77,7 @@
     enabled=yes
     state=restarted
     sleep=3
-  remote_user: devops
-  sudo: False
+  sudo: True
   tags:
     - deploy
     - rollback
