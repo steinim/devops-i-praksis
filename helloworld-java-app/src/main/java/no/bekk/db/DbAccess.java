@@ -25,6 +25,7 @@ public class DbAccess {
 		tablename = System.getProperty("db.tablename");
 		try {
 			String dbUrl = "jdbc:postgresql://" + dbServer +"/" + schema + "?user="+ user + "&password=" + password;
+			System.out.println("Connecting to: " + dbUrl);
 			connect = DriverManager.getConnection(dbUrl);
 		} catch (SQLException e) {
 			e.printStackTrace();
