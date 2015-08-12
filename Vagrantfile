@@ -29,12 +29,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     db.vm.hostname = "db.local"
     db.hostmanager.aliases = %w(db)
 
-    #db.vm.provision "ansible" do |ansible|
-    #  ansible.playbook = "site.yml"
-    #  ansible.inventory_path = "hosts"
-    #  ansible.host_key_checking = "false"
-    #  ansible.limit = "db.local"
-    #end
+    db.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.inventory_path = "hosts"
+      ansible.host_key_checking = "false"
+      ansible.limit = "db.local"
+      ansible.skip_tags = "deploy,post_deploy,rollback"
+    end
 
   end
 
@@ -44,12 +45,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     app1.vm.hostname = "app1.local"
     app1.hostmanager.aliases = %w(app1)
 
-    #app1.vm.provision "ansible" do |ansible|
-    #  ansible.playbook = "site.yml"
-    #  ansible.inventory_path = "hosts"
-    #  ansible.host_key_checking = "false"
-    #  ansible.limit = "app1.local"
-    #end
+    app1.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.inventory_path = "hosts"
+      ansible.host_key_checking = "false"
+      ansible.limit = "app1.local"
+      ansible.skip_tags = "deploy,post_deploy,rollback"
+    end
 
   end
 
@@ -59,12 +61,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     app2.vm.hostname = "app2.local"
     app2.hostmanager.aliases = %w(app2)
 
-    #app2.vm.provision "ansible" do |ansible|
-    #  ansible.playbook = "site.yml"
-    #  ansible.inventory_path = "hosts"
-    #  ansible.host_key_checking = "false"
-    #  ansible.limit = "app2.local"
-    #end
+    app2.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.inventory_path = "hosts"
+      ansible.host_key_checking = "false"
+      ansible.limit = "app2.local"
+      ansible.skip_tags = "deploy,post_deploy,rollback"
+    end
 
   end
 
@@ -75,12 +78,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     proxy.vm.hostname = "proxy.local"
     proxy.hostmanager.aliases = %w(proxy)
 
-    #proxy.vm.provision "ansible" do |ansible|
-    #  ansible.playbook = "site.yml"
-    #  ansible.inventory_path = "hosts"
-    #  ansible.host_key_checking = "false"
-    #  ansible.limit = "proxy.local"
-    #end
+    proxy.vm.provision "ansible" do |ansible|
+      ansible.playbook = "site.yml"
+      ansible.inventory_path = "hosts"
+      ansible.host_key_checking = "false"
+      ansible.limit = "proxy.local"
+      ansible.skip_tags = "deploy,nginx_config,post_deploy,rollback"
+    end
   end
 
 end
