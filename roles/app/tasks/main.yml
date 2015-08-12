@@ -80,7 +80,6 @@
   sudo: True
   tags:
     - deploy
-    - rollback
 
 - name: Wait until app is available
   local_action: wait_for port={{ http_port }} host={{ inventory_hostname }} delay=5
@@ -88,7 +87,6 @@
   tags:
     - deploy
     - status
-    - rollback
 
 - name: Remove old deploys (keeping the two latest)
   shell: "ls -tr /home/{{ user }}/devops_*.jar | head -n -2 | xargs rm -Rf"
